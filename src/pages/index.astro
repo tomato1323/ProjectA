@@ -1,0 +1,86 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import restaurants from '@/restaurants.json'
+
+import { Image } from 'astro:assets';
+
+const imageFiles = import.meta.glob<{default: ImageMetadata}>('@/assets/*', {eager:true});
+const images = Object.fromEntries(
+    Object.entries(imageFiles).map(([path, module]) => {
+        const fileName = path.split('/').pop()?.split('.')[0] || '';
+        return [fileName, module.default]
+    })
+)
+
+---
+
+<Layout title="ProjectA">
+    <section class=`
+    min-h-[calc(100vh-5rem)] flex flex-col
+    items-center justify-center text-center relative
+    bg-linear-to-b from-olive-300/30 to-white
+    `>
+        <!-- ヒーロービュー乱用するマン -->
+        <div class="max-w-3xl mx-auto">
+            <span class=`
+            text-3xl md:text-5xl font-serif font-medium
+            text-gray-800
+            leading-relaxed tracking-wide
+            `>
+                おいしいごはんを求めて
+            </span>
+        </div>
+    </section>
+
+    <section class=`
+        max-w-7xl mx-auto
+        px-5 md:px-10 py-10
+    `>
+        <!-- 料理マガジン風アシンメトリー -->
+         <div class=`
+            columns-1 sm:columns-2 lg:columns-3
+            gap-6
+         `>
+            {restaurants.map((item, index)=> {
+                const isEven = index % 2 === 0;
+                return (
+                    <a href={`/inspect/${item.img}`} class={`
+                        break-inside-avoid block
+                        group relative overflow-hidden
+                        rounded-2xl shadow-sm
+                        transition-all duration-500 ease-out
+                        hover:shadow-md hover:scale-105
+                        my-5
+                    `}>
+                        <div class=`w-full group relative overflow-hidden` >
+                            {/* Picture */}
+                            <Image src={images[item.img]} alt={item.name}
+                            class=`
+                                w-full h-auto object-cover
+                            ` />
+                            <div class=`
+                                absolute inset-0
+                                bg-linear-to-t
+                                from-black/60 via-black/20 to-transparent
+                                transition-opacity duration-300
+                                opacity-0 group-hover:opacity-100
+                                flex flex-col justify-end p-6
+                                text-white
+                            ` >
+                                <span class="text-xs tracking-widest uppercase mb-1">
+                                    {item.area}
+                                </span>
+                                <h3 class="text-lg font-medium">
+                                    {item.name}
+                                </h3>
+                                <p class="text-sm mt-1">
+                                    {item.desc}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                )
+            })}
+         </div>
+    </section>
+</Layout>

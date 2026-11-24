@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@400;500;700&family=Zen+Old+Mincho:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "Zen Kaku Gothic Antique", sans-serif;
+    --font-serif: "Zen Old Mincho", serif;
+}
+
+.zen-kaku-gothic-antique-regular {
+  font-family: "Zen Kaku Gothic Antique", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.zen-kaku-gothic-antique-medium {
+  font-family: "Zen Kaku Gothic Antique", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.zen-kaku-gothic-antique-bold {
+  font-family: "Zen Kaku Gothic Antique", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.zen-old-mincho-regular {
+  font-family: "Zen Old Mincho", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.zen-old-mincho-medium {
+  font-family: "Zen Old Mincho", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.zen-old-mincho-semibold {
+  font-family: "Zen Old Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.zen-old-mincho-bold {
+  font-family: "Zen Old Mincho", serif;
+  font-weight: 700;
+  font-style: normal;
+}

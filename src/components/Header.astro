@@ -1,0 +1,30 @@
+---
+const navItems = [
+    {label: "Top", href: "/"},
+    {label: "About", href: "/"},
+]
+---
+<header class="w-full">
+    <div class=`
+    flex items-center justify-between px-6 py-4
+    bg-white/80 backdrop-blur-md shadow-sm
+    ` >
+        <a href="/" class=`
+            text-xl font-bold text-gray-800 tracking-tight
+        `>
+            ProjectA
+        </a>
+        <nav class="md:flex items-center gap-6">
+            {navItems.map((item) =>(
+                <a href={item.href} class=`
+                text-sm font-medium text-gray-600
+                hover:text-gray-900 hover:scale-125
+                duration-200 transition-all inline-block
+                px-3
+                ` >
+                    {item.label}
+                </a>
+            ))}
+        </nav>
+    </div>
+</header>
